@@ -150,7 +150,7 @@ void kernel_main() {
     // }
 
     struct process* process = 0;
-    int res = process_load_switch("0:/blank.elf", &process);
+    int res = process_load_switch("0:/shell.elf", &process);
     if (res != PEACHOS_ALL_OK) {
         panic("Failed to load blank");
     }
@@ -164,17 +164,17 @@ void kernel_main() {
     //
     //
 
-    struct process* process_2 = 0;
-    res = process_load_switch("0:/blank.elf", &process_2);
-    if (res != PEACHOS_ALL_OK) {
-        panic("Failed to load blank");
-    }
-    struct command_argument root_argument_2;
-    strcpy(root_argument_2.argument, "ONE");
+    //struct process* process_2 = 0;
+    //res = process_load_switch("0:/blank.elf", &process_2);
+    //if (res != PEACHOS_ALL_OK) {
+    //    panic("Failed to load blank");
+    //}
+    //struct command_argument root_argument_2;
+    //strcpy(root_argument_2.argument, "ONE");
     // struct command_argument second_argument;
     // strcpy(second_argument.argument, "Second!");
     // root_argument.next = &second_argument;
-    process_inject_arguments(process_2, &root_argument_2);
+    //process_inject_arguments(process_2, &root_argument_2);
 
     task_run_first_ever_task();
 

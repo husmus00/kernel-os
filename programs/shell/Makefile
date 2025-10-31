@@ -10,4 +10,4 @@ all: $(FILES)
 
 clean:
 	rm -rf $(FILES)
-	rm ./shell.elf
+	rm -f ./shell.elf

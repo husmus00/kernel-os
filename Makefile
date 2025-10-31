@@ -15,7 +15,6 @@ all: ./bin/boot.bin ./bin/kernel.bin user_programs
 	sudo umount /mnt/d
 
 ./bin/kernel.bin: $(FILES)
-	# nasm -f bin ./build/kernel.asm.o -o ./bin/kernel.bin
 	i686-elf-ld -g -relocatable $(FILES) -o ./build/kernelfull.o
 	i686-elf-gcc $(FLAGS) -T ./src/linker.ld -o ./bin/kernel.bin -ffreestanding -O0 -nostdlib ./build/kernelfull.o
 
