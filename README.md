@@ -1,4 +1,4 @@
-# PeachOS
+# x86 Kernel
 
 A bootable multitasking kernel built in no-lib C, featuring memory management, ELF program execution, and a basic command-line interface. Also includes a keyboard driver and FAT16 read support. 
 
