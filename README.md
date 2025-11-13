@@ -2,6 +2,8 @@
 
 A bootable multitasking kernel built in no-lib C, featuring memory management, ELF program execution, and a basic command-line interface. Also includes a keyboard driver and FAT16 read support. 
 
+<img width="696" height="412" alt="image" src="https://github.com/user-attachments/assets/68a4d658-ae7c-4842-9be6-676168f55e3b" />
+
 ## Prerequisites
 
 Install the following:
