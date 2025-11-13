@@ -108,7 +108,7 @@ void kernel_main() {
 
     // panic("The system cannot continue");
 
-    char* str = "Booting PeachOS....\n";
+    char* str = "Booting ....\n";
     println(str);
     // video_mem[0] = terminal_make_char('A', 7);
     // terminal_putchar(0, 0, 'A', 7);

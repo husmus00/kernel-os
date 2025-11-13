@@ -1,34 +1,39 @@
 # FILES=./build/stdio.o ./build/memory.o ./build/string.o ./build/stdlib.o ./build/peachos.o ./build/peachos.asm.o ./build/start.o
 FILES=./build/start.asm.o ./build/start.o ./build/peachos.asm.o ./build/peachos.o ./build/stdlib.o ./build/stdio.o ./build/string.o ./build/memory.o
 INCLUDES=-I./src
-FLAGS= -g -falign-jumps -falign-functions -falign-labels -falign-loops -fstrength-reduce -fomit-frame-pointer -finline-functions -Wno-unused-function -fno-builtin -Werror -Wno-unused-label -Wno-cpp -Wno-unused-parameter -nostdlib -nostartfiles -nodefaultlibs -Wall -O0 -Iinc 
+FLAGS= -g -falign-jumps -falign-functions -falign-labels -falign-loops -fstrength-reduce -fomit-frame-pointer -finline-functions -Wno-unused-function -fno-builtin -Werror -Wno-unused-label -Wno-cpp -Wno-unused-parameter -nostdlib -nostartfiles -nodefaultlibs -Wall -O0 -Iinc
+
+.PHONY: all clean
 
 all: ${FILES}
 	i686-elf-ld -m elf_i386 -relocatable ${FILES} -o ./stdlib.elf
 
-./build/start.asm.o: ./src/start.asm
+./build/start.asm.o: ./src/start.asm | build
 	nasm -f elf ./src/start.asm -o ./build/start.asm.o
 
-./build/start.o: ./src/start.c
+./build/start.o: ./src/start.c | build
 	i686-elf-gcc ${INCLUDES} $(FLAGS) -std=gnu99 -c ./src/start.c -o ./build/start.o
 
-./build/peachos.asm.o: ./src/peachos.asm
+./build/peachos.asm.o: ./src/peachos.asm | build
 	nasm -f elf ./src/peachos.asm -o ./build/peachos.asm.o
 
-./build/peachos.o: ./src/peachos.c
+./build/peachos.o: ./src/peachos.c | build
 	i686-elf-gcc ${INCLUDES} $(FLAGS) -std=gnu99 -c ./src/peachos.c -o ./build/peachos.o
 
-./build/stdlib.o: ./src/stdlib.c
+./build/stdlib.o: ./src/stdlib.c | build
 	i686-elf-gcc ${INCLUDES} $(FLAGS) -std=gnu99 -c ./src/stdlib.c -o ./build/stdlib.o
 
-./build/stdio.o: ./src/stdio.c
+./build/stdio.o: ./src/stdio.c | build
 	i686-elf-gcc ${INCLUDES} $(FLAGS) -std=gnu99 -c ./src/stdio.c -o ./build/stdio.o
 
-./build/string.o: ./src/string.c
+./build/string.o: ./src/string.c | build
 	i686-elf-gcc ${INCLUDES} $(FLAGS) -std=gnu99 -c ./src/string.c -o ./build/string.o
 
-./build/memory.o: ./src/memory.c
+./build/memory.o: ./src/memory.c | build
 	i686-elf-gcc ${INCLUDES} $(FLAGS) -std=gnu99 -c ./src/memory.c -o ./build/memory.o
+
+build:
+	mkdir -p ./build
 
 clean:
 	rm -rf ${FILES}
