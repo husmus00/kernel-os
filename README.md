@@ -32,7 +32,7 @@ This project taught me:
 - Interrupt handling and device drivers
 - Low-level systems programming
 
-I plan to add multi-arch functionality with RISC-V support
+I plan to add multi-arch functionality with ARM or RISC-V support
 
 ## License
 
